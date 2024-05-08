@@ -1,0 +1,7 @@
+- 👋 Hi, I’m @Shreyas-Mogre
+- 👀 I’m interested in coding and AI
+- 🌱 I’m currently learning C++, Python
+- 💞️ I’m looking to collaborate on DSA & ML
+- 📫 How to reach me? you can contact me via email mogreshreyas73@gmail.com
+- 😄 Pronouns: He/Him
+- ⚡ Fun fact: I am a content creator on YouTube named Mogrenium.

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Echoes of Eldoria: A Text-Based Adventure</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="overlay" aria-hidden="true"></div>
+    <header>
+        <h1>Echoes of Eldoria</h1>
+        <div class="controls">
+            <button id="btn-new">New Game</button>
+            <button id="btn-save" title="Save to this browser">Save</button>
+            <button id="btn-load">Load</button>
+            <button id="btn-export" title="Download your save as a file">Export</button>
+            <label class="btn" for="import-file" title="Import a save file" style="display:inline-grid; place-items:center;">
+        Import <input id="import-file" type="file" accept="application/json" style="display:none" />
+      </label>
+            <button id="btn-help" title="How to play">Help</button>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <section id="story-panel" class="panel" aria-live="polite">
+            <div id="titlebar">
+                <div id="node-title">—</div>
+                <div id="node-tag" class="muted">Welcome to Eldoria</div>
+            </div>
+            <div id="story-text">Press <b>New Game</b> to begin your journey.</div>
+            <div class="hr"></div>
+            <div class="choices" id="choices"></div>
+        </section>
+
+        <aside id="sidebar" class="panel">
+            <div class="statbar">
+                <div class="stat"><span>Health</span>
+                    <div class="bar" aria-label="Health">
+                        <div id="bar-health" class="fill"></div>
+                    </div>
+                    <div id="val-health">—</div>
+                </div>
+                <div class="stat"><span>Reputation</span>
+                    <div class="bar" aria-label="Reputation">
+                        <div id="bar-rep" class="fill"></div>
+                    </div>
+                    <div id="val-rep">—</div>
+                </div>
+            </div>
+            <div class="hr"></div>
+            <div class="inv">
+                <strong>Inventory</strong>
+                <div id="inv-tags" class="inv-tags" aria-label="Inventory items"></div>
+                <div class="sys small">Tip: Some choices require certain items or reputation.</div>
+            </div>
+            <div class="hr"></div>
+            <div class="sys small">
+                Save Slot: <code>eldoriaSave</code>
+                <div class="footer">© Echoes of Eldoria — Demo</div>
+            </div>
+        </aside>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <!-- Help Modal -->
+    <dialog id="help-modal" class="modal">
+        <div class="card">
+            <h2>How to Play</h2>
+            <p>Read the story, pick choices, and watch your stats and inventory evolve. Your decisions steer the narrative and unlock unique endings.</p>
+            <ul>
+                <li><b>Health</b>: drops on dangerous paths; if it hits 0, your journey ends.</li>
+                <li><b>Reputation</b>: rises with kindness, falls with cruelty; affects choices.</li>
+                <li><b>Inventory</b>: key items enable special options and better endings.</li>
+            </ul>
+            <p class="muted small">You can edit the story data file <code>story.json</code> to change or add nodes.</p>
+            <div class="actions">
+                <button id="close-help">Close</button>
+            </div>
+        </div>
+    </dialog>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

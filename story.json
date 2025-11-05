@@ -1,0 +1,207 @@
+{
+  "start": {
+    "id": "start",
+    "title": "Whispers Among Ruins",
+    "tag": "Prologue",
+    "bg": "ruins",
+    "text": "Night drapes the shattered citadel of Eldoria. In the hush, a silver moth dances over broken stone—and a voice, like wind through glass, calls your name. You feel the weight of a forgotten oath stir within you.",
+    "choices": [
+      { "text": "Follow the silver moth.", "next": "crossroads", "effects": {"rep": 2} },
+      { "text": "Ignore it and search the ruins for supplies.", "next": "scavenge", "effects": {"itemsAdd": ["Rust Key"], "rep": -1} }
+    ]
+  },
+  "scavenge": {
+    "id": "scavenge",
+    "title": "Echoes in the Dust",
+    "tag": "Ruins",
+    "bg": "ruins",
+    "text": "You sift through toppled columns and moss-wet bricks. Your fingers close on a rusted key and a faded emblem of the Dawn Guild.",
+    "choices": [
+      { "text": "Pocket the finds and move on.", "next": "crossroads", "effects": {"itemsAdd": ["Dawn Emblem"], "rep": 1} }
+    ]
+  },
+  "crossroads": {
+    "id": "crossroads",
+    "title": "Paths of the Vale",
+    "tag": "Branch Point",
+    "bg": "valley",
+    "text": "At the vale's heart three paths divide: lanterns glow in a distant village, the Verdantwood breathes with hidden life, and a star-torn tower scratches the sky.",
+    "choices": [
+      { "text": "Head to the village lights.", "next": "village" },
+      { "text": "Slip into the Verdantwood.", "next": "forest" },
+      { "text": "Climb toward the star-torn tower.", "next": "tower" }
+    ]
+  },
+  "village": {
+    "id": "village",
+    "title": "Ash and Embers",
+    "tag": "Village",
+    "bg": "village",
+    "text": "Smoke laces the streets. A healer kneels by the wounded. The villagers speak of a shadow that steals warmth from the wells.",
+    "choices": [
+      { "text": "Help the healer (lose time, gain respect).", "next": "v_heal", "effects": {"rep": 5, "itemsAdd": ["Herbal Poultice"]} },
+      { "text": "Search houses for clues (and valuables).", "next": "v_search", "effects": {"rep": -2, "itemsAdd": ["Silver Scrip"]} },
+      { "text": "Rally the villagers to defend the wells.", "next": "v_rally", "requirements": {"repMin": 5}, "effects": {"rep": 3} }
+    ]
+  },
+  "v_heal": {
+    "id": "v_heal",
+    "title": "Warm Hands, Warmer Names",
+    "tag": "Village",
+    "bg": "village",
+    "text": "You bind wounds and share the poultice. Names become smiles. Someone presses a charm into your palm: 'May the Dawn guide you.'",
+    "choices": [
+      { "text": "Accept the charm.", "next": "crossroads", "effects": {"itemsAdd": ["Dawn Charm"], "rep": 2} }
+    ]
+  },
+  "v_search": {
+    "id": "v_search",
+    "title": "Quiet Doors, Quieter Guilt",
+    "tag": "Village",
+    "bg": "village",
+    "text": "You find a cache of silver and a ledger naming tithe-givers. The healer watches, saying nothing.",
+    "choices": [
+      { "text": "Return the silver (make amends).", "next": "crossroads", "effects": {"rep": 3, "itemsRemove": ["Silver Scrip"]} },
+      { "text": "Keep the silver and move on.", "next": "crossroads", "effects": {"rep": -3} }
+    ]
+  },
+  "v_rally": {
+    "id": "v_rally",
+    "title": "Circles of Fire",
+    "tag": "Village",
+    "bg": "village",
+    "text": "With words and will, you set watchfires and hearts alight. The wells steam, unafraid of night.",
+    "choices": [
+      { "text": "Accept their oath to the Dawn Guild.", "next": "crossroads", "effects": {"itemsAdd": ["Dawn Oath"], "rep": 4} }
+    ]
+  },
+  "forest": {
+    "id": "forest",
+    "title": "Shadebound Pact",
+    "tag": "Forest",
+    "bg": "forest",
+    "text": "Moonlight webs the branches. A masked rogue steps from the ferns, offering a sigil that thrums like a heartbeat.",
+    "choices": [
+      { "text": "Accept the Shadow Sigil (risky power).", "next": "f_accept", "effects": {"rep": -2, "itemsAdd": ["Shadow Sigil"]} },
+      { "text": "Refuse and duel to first blood.", "next": "f_duel", "effects": {"health": -15, "rep": 1} },
+      { "text": "Parley: trade the Dawn Emblem for safe passage.", "next": "f_trade", "requirements": {"hasItems": ["Dawn Emblem"]}, "effects": {"rep": 2} }
+    ]
+  },
+  "f_accept": {
+    "id": "f_accept",
+    "title": "Cold Ink, Warm Whisper",
+    "tag": "Forest",
+    "bg": "forest",
+    "text": "The sigil burns cold into your palm. The rogue whispers: 'When the tower calls, choose the shadowed door.'",
+    "choices": [
+      { "text": "Press on to the tower.", "next": "tower" }
+    ]
+  },
+  "f_duel": {
+    "id": "f_duel",
+    "title": "Edge of Leaves",
+    "tag": "Forest",
+    "bg": "forest",
+    "text": "Steel sings; sap spatters. You disarm the rogue, who vanishes with a laugh. The forest watches, unimpressed.",
+    "choices": [
+      { "text": "Catch your breath and head to the tower.", "next": "tower" }
+    ]
+  },
+  "f_trade": {
+    "id": "f_trade",
+    "title": "Emblem for Silence",
+    "tag": "Forest",
+    "bg": "forest",
+    "text": "You trade symbol for silence. The rogue marks a hidden stair in the tower: 'Sunlight reveals what shadow hides.'",
+    "choices": [
+      { "text": "Go to the tower.", "next": "tower" }
+    ]
+  },
+  "tower": {
+    "id": "tower",
+    "title": "Star-Torn Spire",
+    "tag": "Tower",
+    "bg": "tower",
+    "text": "The tower's gates yawn. Inside, three doors shiver with light: left, a warm gold; middle, a cold violet; right, a patient gray stair curling upward.",
+    "choices": [
+      { "text": "Enter the golden door.", "next": "door_gold" },
+      { "text": "Enter the violet door (requires Shadow Sigil).", "next": "door_violet", "requirements": {"hasItems": ["Shadow Sigil"]} },
+      { "text": "Take the gray stair (easier with Dawn Charm or hint).", "next": "stair_gray", "requirements": {"anyItems": ["Dawn Charm", "Dawn Emblem"]} }
+    ]
+  },
+  "door_gold": {
+    "id": "door_gold",
+    "title": "Shard of the Sun",
+    "tag": "Tower",
+    "bg": "tower",
+    "text": "A hall of mirrors and morning. At its end rests a shard that hums with kindness. You reach out...",
+    "choices": [
+      { "text": "Claim the Sun Shard.", "next": "summit", "effects": {"itemsAdd": ["Sun Shard"], "rep": 2} }
+    ]
+  },
+  "door_violet": {
+    "id": "door_violet",
+    "title": "Thorn of Night",
+    "tag": "Tower",
+    "bg": "tower",
+    "text": "Violet fire knits around a black thorn. Your sigil answers, drinking the dark.",
+    "choices": [
+      { "text": "Seize the Night Thorn.", "next": "summit", "effects": {"itemsAdd": ["Night Thorn"], "rep": -2, "health": -5} }
+    ]
+  },
+  "stair_gray": {
+    "id": "stair_gray",
+    "title": "Hidden Helix",
+    "tag": "Tower",
+    "bg": "tower",
+    "text": "Dust whispers as you climb the hidden stair. A mural shows dawn and dusk entwined—neither winning, both needed.",
+    "choices": [
+      { "text": "Contemplate balance (restore a little health).", "next": "summit", "effects": {"health": 10} }
+    ]
+  },
+  "summit": {
+    "id": "summit",
+    "title": "Crown of Wind",
+    "tag": "Finale",
+    "bg": "summit",
+    "text": "At the spire's crown the silver moth returns, unfolding into a figure of light and shadow. 'Eldoria does not need a ruler,' it says. 'It needs a <i>choice</i>.'",
+    "choices": [
+      { "text": "Fuse the Sun Shard and Dawn Oath (Guardian Ending)", "next": "end_guardian", "requirements": {"hasItems": ["Sun Shard"], "anyItems": ["Dawn Oath", "Dawn Charm"], "repMin": 6} },
+      { "text": "Wield the Night Thorn with the Shadow Sigil (Pact Ending)", "next": "end_pact", "requirements": {"hasItems": ["Night Thorn", "Shadow Sigil"]} },
+      { "text": "Refuse both powers—walk the middle way (Wanderer Ending)", "next": "end_wanderer" }
+    ]
+  },
+  "end_guardian": {
+    "id": "end_guardian",
+    "title": "Guardian of Eldoria",
+    "tag": "Ending",
+    "bg": "sunrise",
+    "end": true,
+    "text": "Light braids with oath. Wells warm, fields green, and names are remembered. You become a keeper, not a king. (Good Ending)",
+    "choices": [
+      { "text": "Play Again", "next": "start", "effects": {"reset": true} }
+    ]
+  },
+  "end_pact": {
+    "id": "end_pact",
+    "title": "A Shadow's Promise",
+    "tag": "Ending",
+    "bg": "night",
+    "end": true,
+    "text": "Dusk crowns the citadel. You bind the dark to a purpose: to watch the watchmen, to question the light. Eldoria exhales—uneasy, alive. (Antihero Ending)",
+    "choices": [
+      { "text": "Play Again", "next": "start", "effects": {"reset": true} }
+    ]
+  },
+  "end_wanderer": {
+    "id": "end_wanderer",
+    "title": "The Road Between",
+    "tag": "Ending",
+    "bg": "valley",
+    "end": true,
+    "text": "You leave the crown to the wind. In taverns and thresholds your name becomes a story, and the story a lantern others carry. (Neutral Ending)",
+    "choices": [
+      { "text": "Play Again", "next": "start", "effects": {"reset": true} }
+    ]
+  }
+}
